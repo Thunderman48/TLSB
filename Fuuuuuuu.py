@@ -1,1 +1,1 @@
-print("fuuuuuuuu")
+print("fuuuuuuuukkkkkkkkkkkkkkkkkkkkkkkk")
