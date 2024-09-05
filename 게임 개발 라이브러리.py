@@ -34,7 +34,7 @@ assests_path = os.path.join(current_path, 'pyaudio')
 assests_image = os.path.join(current_path, 'pyimage')
 
 #이미지 설정
-start_image = pygame.image.load((os.path.join(assests_image, 'start_butten.png')))
+start_image = pygame.image.load((os.path.join(assests_image, 'start.png')))
 
 #배경음악
 pygame.mixer.music.load(os.path.join(assests_path, 'prototype_background music.wav'))
