@@ -1,10 +1,11 @@
 import pygame
 import os
+import random
 #파이게임 초기화
 pygame.init()
 
 #게임이름 정하기
-pygame.display.set_caption("pygame")
+pygame.display.set_caption("pygame_prototype")
 
 #스크린 사이즈 정하기
 SCREEN_WIDTH = 800
@@ -19,6 +20,7 @@ white = (255, 255, 255)
 red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
+random_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
 #주사율
 clock = pygame.time.Clock()
@@ -34,7 +36,8 @@ assests_path = os.path.join(current_path, 'pyaudio')
 assests_image = os.path.join(current_path, 'pyimage')
 
 #이미지 설정
-start_image = pygame.image.load((os.path.join(assests_image, 'start.png')))
+start_image = pygame.image.load((os.path.join(assests_image, 'start_butten.png')))
+start_image_s = pygame.transform.scale(start_image, (200, 100))
 
 #배경음악
 pygame.mixer.music.load(os.path.join(assests_path, 'prototype_background music.wav'))
@@ -52,7 +55,9 @@ while not done:
 
     #이미지 업로드
 
-    screen.blit(start_image, [390, 300])
+    screen.blit(start_image_s, [300, 300])
+
+
     #화면 업데이트
     pygame.display.flip()
     
