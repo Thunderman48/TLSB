@@ -26,8 +26,10 @@ random_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0
 clock = pygame.time.Clock()
 
 #게임 종료 전까지 반복]
+screen_state = 'start'
 done = False
-
+left = 1
+right = 0
 #assets경로 설정
 current_path = os.path.dirname(__file__)
 #오디오경로설정
@@ -47,15 +49,29 @@ pygame.mixer.music.play(-1)#배경음악 무한반복
 while not done:
     #이벤트 반복구간 
     for event in pygame.event.get():
-       if event.type == pygame.QUIT:
+
+        if event.type == pygame.QUIT:
             done = True
+    if screen_state == "start":
+        #스크린 색 정의
+        screen.fill(black)
+    if screen_state == "start": 
+        #스크린 색 정의
+        screen.fill(black)
 
-    #스크린 색 정의
-    screen.fill(blue)
 
-    #이미지 업로드
+        width = start_image_s.get_width()
+        height = start_image_s.get_height()
 
-    screen.blit(start_image_s, [300, 300])
+        pygame.draw.rect(screen, blue, [300, 300, width, height], 0)
+        screen.blit(start_image_s, [300, 300])
+        event = pygame.event.poll()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.x >= 300 and event.x <= width:
+                if event.mouse.get_pos_[1] >= 300 and event.mouse.get_pos_[1] <= height:
+                    screen.blit(white)
+
+
 
 
     #화면 업데이트
