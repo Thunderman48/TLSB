@@ -54,7 +54,6 @@ music = pygame.mixer.music.load(os.path.join(assests_path, 'prototype_background
 startmusic = pygame.mixer.Sound("start_audio.wav")
 background = screen.fill(white)
 current_screen = 1
-
 #게임반복구간
 while not done:
     #이벤트 반복구간 
@@ -69,7 +68,8 @@ while not done:
             screen.blit(image, [0, 0])
             pygame.display.flip()
             pygame.mixer.music.stop()
-            startmusic.play()
+            startmusic.set_volume(0.5)
+            startmusic.play(-1)
         else:
             width = start_image_s.get_width()
             height = start_image_s.get_height()
