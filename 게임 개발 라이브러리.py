@@ -55,6 +55,7 @@ startmusic = pygame.mixer.Sound("start_audio.wav")
 background = screen.fill(white)
 current_screen = 1
 #게임반복구간
+
 while not done:
     #이벤트 반복구간 
     for event in pygame.event.get():
