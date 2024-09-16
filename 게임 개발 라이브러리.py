@@ -50,8 +50,9 @@ image = pygame.image.load((os.path.join(assests_image, 'pygame.backimage.png')))
 empty_image = pygame.Surface((width, height))
 empty_image.fill(white) 
 #배경음악
-pygame.mixer.music.load(os.path.join(assests_path, 'prototype_background music.wav'))
-pygame.mixer.music.play(-1)#배경음악 무한반복
+music = pygame.mixer.music.load(os.path.join(assests_path, 'prototype_background music.wav'))
+start_music = pygame.mixer.Sound("start_audio.wav")
+
 
 background = screen.fill(white)
 current_screen = 1
@@ -69,11 +70,14 @@ while not done:
         if current_screen == 2:
             screen.blit(image, [0, 0])
             pygame.display.flip()
+            pygame.mixer.music.stop()
+            start_music.play()
         else:
             width = start_image_s.get_width()
-            height = start_image_s.get_height()              
+            height = start_image_s.get_height()
             screen.fill(black) 
-            screen.blit(start_image_s, [300, 300]) 
+            screen.blit(start_image_s, [300, 300])
+            pygame.mixer.music.play()#배경음악 재생
     #화면 업데이트
     pygame.display.flip()
     
