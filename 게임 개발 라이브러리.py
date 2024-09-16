@@ -69,14 +69,15 @@ while not done:
             screen.blit(image, [0, 0])
             pygame.display.flip()
             pygame.mixer.music.stop()
-            startmusic.set_volume(0.5)
-            startmusic.play(-1)
+            pygame.mixer.music.load(os.path.join(assests_path, 'start.wav'))
+            pygame.mixer.music.play(-1)
+
         else:
             width = start_image_s.get_width()
             height = start_image_s.get_height()
             screen.fill(black) 
             screen.blit(start_image_s, [300, 300])
-            pygame.mixer.music.play()#배경음악 재생
+            pygame.mixer.music.play(-1)#배경음악 재생
     #화면 업데이트
     pygame.display.flip()
     
