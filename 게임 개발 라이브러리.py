@@ -1,6 +1,7 @@
 import pygame
 import os
 import random
+import sys
 #파이게임 초기화
 pygame.init()
 
@@ -40,10 +41,20 @@ assests_image = os.path.join(current_path, 'pyimage')
 #이미지 설정
 start_image = pygame.image.load((os.path.join(assests_image, 'start_butten.png')))
 start_image_s = pygame.transform.scale(start_image, (200, 100))
+start_image_rect =start_image_s.get_rect()
+width = start_image_s.get_width()
+height = start_image_s.get_height()
 
+image = pygame.image.load((os.path.join(assests_image, 'pygame.backimage.png')))
+
+empty_image = pygame.Surface((width, height))
+empty_image.fill(white) 
 #배경음악
 pygame.mixer.music.load(os.path.join(assests_path, 'prototype_background music.wav'))
 pygame.mixer.music.play(-1)#배경음악 무한반복
+
+background = screen.fill(white)
+current_screen = 1
 
 #게임반복구간
 while not done:
@@ -52,28 +63,17 @@ while not done:
 
         if event.type == pygame.QUIT:
             done = True
-    if screen_state == "start":
-        #스크린 색 정의
-        screen.fill(black)
-    if screen_state == "start": 
-        #스크린 색 정의
-        screen.fill(black)
 
-
-        width = start_image_s.get_width()
-        height = start_image_s.get_height()
-
-        pygame.draw.rect(screen, blue, [300, 300, width, height], 0)
-        screen.blit(start_image_s, [300, 300])
-        event = pygame.event.poll()
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if event.x >= 300 and event.x <= width:
-                if event.mouse.get_pos_[1] >= 300 and event.mouse.get_pos_[1] <= height:
-                    screen.blit(white)
-
-
-
-
+        if event.type == pygame.KEYDOWN:
+            current_screen = 2
+        if current_screen == 2:
+            screen.blit(image, [0, 0])
+            pygame.display.flip()
+        else:
+            width = start_image_s.get_width()
+            height = start_image_s.get_height()              
+            screen.fill(black) 
+            screen.blit(start_image_s, [300, 300]) 
     #화면 업데이트
     pygame.display.flip()
     
