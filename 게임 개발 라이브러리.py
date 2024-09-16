@@ -51,7 +51,7 @@ empty_image = pygame.Surface((width, height))
 empty_image.fill(white) 
 #배경음악
 music = pygame.mixer.music.load(os.path.join(assests_path, 'prototype_background music.wav'))
-startmusic = pygame.mixer.Sound("start_audio.wav")
+startmusic = pygame.mixer.Sound("start.wav")
 background = screen.fill(white)
 current_screen = 1
 #게임반복구간
