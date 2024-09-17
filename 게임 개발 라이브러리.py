@@ -2,6 +2,8 @@ import pygame
 import os
 import random
 import sys
+
+import pygame.tests
 #파이게임 초기화
 pygame.init()
 
@@ -38,6 +40,17 @@ assests_path = os.path.join(current_path, 'pyaudio')
 #이미지경로설정
 assests_image = os.path.join(current_path, 'pyimage')
 
+#텍스트 폰트 설정
+font = pygame.font.SysFont("D2Coding", 30, True, False)
+
+texts = font.render("press space key", True, blue)
+
+print(texts.get_size())
+texts_x = 255/2
+texts_y = 33/2
+
+
+
 #이미지 설정
 start_image = pygame.image.load((os.path.join(assests_image, 'start_butten.png')))
 start_image_s = pygame.transform.scale(start_image, (200, 100))
@@ -71,7 +84,8 @@ while not done:
             pygame.mixer.music.stop()
             pygame.mixer.music.load(os.path.join(assests_path, 'start.wav'))
             pygame.mixer.music.play(-1)
-
+            pygame.tests
+            screen.blit(texts, (400-texts_x, 299-texts_y))
         else:
             width = start_image_s.get_width()
             height = start_image_s.get_height()
